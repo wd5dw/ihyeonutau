@@ -20,15 +20,19 @@
       padding: 0;
     }
 
+    html, body {
+      height: 100%;
+      overflow: hidden; /* ✅ 완전히 고정 */
+    }
+
     body {
       font-family: 'Noto Sans JP', sans-serif;
       background: radial-gradient(ellipse at top, #0f0e18 0%, var(--bg-1) 70%);
       color: #e9e9f3;
-      overflow: hidden; /* ✅ 스크롤 제거 */
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
+      height: 100vh; /* ✅ 안정적인 고정 높이 */
       padding: 24px;
       position: relative;
     }
@@ -36,7 +40,7 @@
     /* 몽환적인 오로라 효과 */
     .aurora {
       position: absolute;
-      inset: -10%; /* ✅ blur 영역 축소 */
+      inset: -10%;
       background: conic-gradient(
         from 200deg at 40% 40%,
         rgba(91,134,229,0.08),
@@ -73,7 +77,6 @@
       align-items: center;
     }
 
-    /* 헤더 */
     h1 {
       font-size: 28px;
       color: #fff;
@@ -87,7 +90,6 @@
       margin-bottom: 14px;
     }
 
-    /* 프로필 */
     .profile {
       background: var(--glass);
       border-radius: 12px;
@@ -116,7 +118,6 @@
       font-size: 13px;
     }
 
-    /* 오른쪽 컬럼 */
     .download-col {
       display: flex;
       flex-direction: column;
@@ -156,7 +157,7 @@
     }
 
     footer {
-      position: fixed;
+      position: absolute; /* ✅ fixed → absolute */
       bottom: 12px;
       left: 50%;
       transform: translateX(-50%);
@@ -167,9 +168,15 @@
 
     /* 📱 모바일 최적화 */
     @media (max-width: 768px) {
-      body {
-        padding: 12px;
+      html, body {
         overflow-y: auto; /* ✅ 모바일에서는 스크롤 허용 */
+      }
+
+      body {
+        height: auto;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding: 12px;
       }
 
       .card {
@@ -201,6 +208,13 @@
 
       .download-btn {
         max-width: 80%;
+      }
+
+      footer {
+        position: relative;
+        margin-top: 24px;
+        transform: none;
+        left: auto;
       }
     }
   </style>
