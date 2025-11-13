@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>이현 (イ・ヒョン) | UTAU 音源配布</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
@@ -14,15 +14,12 @@
       --accent-grad: linear-gradient(135deg, #7b5be5 0%, #36d1dc 100%);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html, body {
+      width: 100%;
       height: 100%;
-      overflow: hidden; /* ✅ 완전히 고정 */
+      overflow: hidden;
     }
 
     body {
@@ -32,12 +29,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh; /* ✅ 안정적인 고정 높이 */
+      height: 100dvh; /* ✅ 주소창 높이 변화에도 안정 */
       padding: 24px;
       position: relative;
     }
 
-    /* 몽환적인 오로라 효과 */
+    /* 몽환적인 배경 */
     .aurora {
       position: absolute;
       inset: -10%;
@@ -59,7 +56,7 @@
       to { transform: rotate(360deg); }
     }
 
-    /* 메인 카드 */
+    /* 카드 */
     .card {
       position: relative;
       z-index: 1;
@@ -157,25 +154,27 @@
     }
 
     footer {
-      position: absolute; /* ✅ fixed → absolute */
+      position: absolute;
       bottom: 12px;
       left: 50%;
       transform: translateX(-50%);
       color: #8f8fa8;
       font-size: 12px;
       z-index: 1;
+      text-align: center;
+      width: 100%;
     }
 
-    /* 📱 모바일 최적화 */
+    /* 📱 모바일 */
     @media (max-width: 768px) {
       html, body {
-        overflow-y: auto; /* ✅ 모바일에서는 스크롤 허용 */
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
       }
 
       body {
-        height: auto;
-        min-height: 100vh;
-        align-items: flex-start;
+        display: block; /* ✅ flex 해제 → 안정적 흐름 */
         padding: 12px;
       }
 
@@ -184,23 +183,14 @@
         text-align: center;
         gap: 16px;
         padding: 20px 16px;
+        margin-top: 60px;
       }
 
-      h1 {
-        font-size: 1.6rem;
-      }
+      h1 { font-size: 1.6rem; }
+      .subtitle { font-size: 0.9rem; }
 
-      .subtitle {
-        font-size: 0.9rem;
-      }
-
-      .profile {
-        padding: 10px 14px;
-      }
-
-      .profile dl {
-        justify-content: center;
-      }
+      .profile { padding: 10px 14px; }
+      .profile dl { justify-content: center; }
 
       .cover {
         max-width: 80%;
@@ -211,10 +201,12 @@
       }
 
       footer {
-        position: relative;
-        margin-top: 24px;
+        position: relative; /* ✅ 카드 아래 자연 배치 */
+        width: 100%;
+        text-align: center;
+        margin: 36px 0 12px;
+        left: 0;
         transform: none;
-        left: auto;
       }
     }
   </style>
