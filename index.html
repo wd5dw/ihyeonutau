@@ -14,13 +14,17 @@
       --accent-grad: linear-gradient(135deg, #7b5be5 0%, #36d1dc 100%);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       font-family: 'Noto Sans JP', sans-serif;
       background: radial-gradient(ellipse at top, #0f0e18 0%, var(--bg-1) 70%);
       color: #e9e9f3;
-      overflow-x: hidden;
+      overflow: hidden; /* ✅ 스크롤 제거 */
       display: flex;
       align-items: center;
       justify-content: center;
@@ -32,7 +36,7 @@
     /* 몽환적인 오로라 효과 */
     .aurora {
       position: absolute;
-      inset: -25%;
+      inset: -10%; /* ✅ blur 영역 축소 */
       background: conic-gradient(
         from 200deg at 40% 40%,
         rgba(91,134,229,0.08),
@@ -165,6 +169,7 @@
     @media (max-width: 768px) {
       body {
         padding: 12px;
+        overflow-y: auto; /* ✅ 모바일에서는 스크롤 허용 */
       }
 
       .card {
